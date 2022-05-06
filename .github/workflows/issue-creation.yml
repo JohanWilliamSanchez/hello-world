@@ -1,0 +1,21 @@
+name: Push Creation Tracker
+on:
+  push:
+    branches:
+      - "master"
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Git Push Details
+      run: |
+          echo "pus creator: ${{ github.event.push.user.login }}"
+          echo "push title: ${{ github.event.push.title }}"
+          echo "Issue number: ${{ github.event.push.number }}"
+          echo "Issue url: ${{ github.event.push.html_url }}"
+          echo "Issue body: ${{ github.event.push.body }}"
+          echo "Assigned labels: " ${{ join(github.event.push.labels.*.name) }}
+          echo "Assignees: " ${{ join(github.event.push.assignees.*.login) }}
+ 
