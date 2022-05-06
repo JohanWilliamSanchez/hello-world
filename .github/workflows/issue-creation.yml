@@ -11,11 +11,11 @@ jobs:
     steps:
     - name: Git Push Details
       run: |
-          echo "pus creator: ${{ github.event.name }}"
-          echo "push title: ${{ github.event.push.title }}"
-          echo "Issue number: ${{ github.event.push.number }}"
-          echo "Issue url: ${{ github.event.push.html_url }}"
-          echo "Issue body: ${{ github.event.push.body }}"
+          echo "pus creator: ${{ GITHUB_ACTOR }}"
+          echo "push title: ${{ GITHUB_JOB }}"
+          echo "Issue number: ${{ GITHUB_RUN_ID }}"
+          echo "Issue url: ${{ GITHUB_WORKFLOW }}"
+          echo "Issue body: ${{ github }}"
           echo "Assigned labels: " ${{ join(github.event.push.labels.*.name) }}
           echo "Assignees: " ${{ join(github.event.push.assignees.*.login) }}
  
