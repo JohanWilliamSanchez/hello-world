@@ -11,5 +11,6 @@ jobs:
     steps:
     - name: Git Push Details
       run: |
-          echo "pus creator: ${{ toJson(github) }}"
+          echo "pus creator: ${{ github.actor}}"
+          echo "pus commit: ${{ github.event.commits[0].message }}"
  
