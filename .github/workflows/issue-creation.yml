@@ -13,4 +13,12 @@ jobs:
       run: |
           echo "pus creator: ${{ github.actor}}"
           echo "pus commit: ${{ github.event.commits[0].message }}"
- 
+      id: my_output
+
+    - name: Print my_output
+      run: |
+          echo "My_Output: ${{ toJson(steps.my_output) }}"
+
+
+         
+          
