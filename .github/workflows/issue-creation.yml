@@ -17,7 +17,7 @@ jobs:
 
     - name: Print my_output
       run: |
-          curl --user ${{SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey="lgmk-nodejs-backend-starter"
+          curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey="lgmk-nodejs-backend-starter"
           
     - name: Set selected color
       run: echo 'Verde'
