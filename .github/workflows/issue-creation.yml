@@ -17,7 +17,7 @@ jobs:
 
     - name: Print my_output
       run: |
-          echo "My_Output: ${{ toJson(steps.my_output) }}"
+          echo "My_Output: ${{ toJson(steps.my_output.outputs.*) }}"
 
 
          
