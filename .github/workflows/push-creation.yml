@@ -20,7 +20,7 @@ jobs:
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
           ls -ltr
-          
+          echo "::set-output name=otro::$(cat ./response.json)
           
     - name: Set selected color
       run: echo 'Verde'
@@ -28,8 +28,8 @@ jobs:
     - name: Get color
       run: |
            echo "My_Variables1 ${{ steps.my_variable.outputs.test }}"
-           echo "My_Variables2 ${{ steps.my_variable.outputs.test2 }}"
-           echo "My_Variables3 ${{ steps.my_variable.outputs.test2.projectStatus.status }}"
+           echo "My_Variables2 ${{ steps.my_variable.outputs.otro }}"
+           echo "My_Variables3 ${{ steps.my_variable.outputs.otro.projectStatus.status }}"
 
 
          
