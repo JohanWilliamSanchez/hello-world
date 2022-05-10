@@ -18,13 +18,17 @@ jobs:
     - name: Print my_output
       id: my_variable
       run: |
-          echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter')" 
+          echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
+          echo "::set-output name=test2::$(cat response.json)
           
     - name: Set selected color
       run: echo 'Verde'
       id: random-color-generator
     - name: Get color
-      run: echo "My_Variables ${{ steps.my_variable.outputs.test.projectStatus }}"
+      run: |
+           echo "My_Variables1 ${{ steps.my_variable.outputs.test }}"
+           echo "My_Variables2 ${{ steps.my_variable.outputs.test2 }}"
+           echo "My_Variables3 ${{ steps.my_variable.outputs.test2.projectStatus.status }}"
 
 
          
