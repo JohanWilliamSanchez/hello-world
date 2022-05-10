@@ -23,7 +23,7 @@ jobs:
       run: echo 'Verde'
       id: random-color-generator
     - name: Get color
-      run: echo "The selected color is ${{ my_variable }}"
+      run: echo "The selected color is $my_variable"
 
 
          
