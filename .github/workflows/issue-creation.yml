@@ -24,7 +24,7 @@ jobs:
       run: echo 'Verde'
       id: random-color-generator
     - name: Get color
-      run: echo "My_Variables ${{ toJson(steps.my_variable.outputs.test).projectStatus.status }}"
+      run: echo "My_Variables ${{ toJson(steps.my_variable.outputs.test) }}"
 
 
          
