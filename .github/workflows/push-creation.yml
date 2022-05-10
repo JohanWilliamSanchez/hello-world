@@ -19,6 +19,7 @@ jobs:
       id: my_variable
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
+          ls -ltr
           
           
     - name: Set selected color
