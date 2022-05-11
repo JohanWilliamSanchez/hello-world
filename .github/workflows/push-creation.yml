@@ -14,6 +14,9 @@ jobs:
           echo "pus creator: ${{ github.actor}}"
           echo "pus commit: ${{ github.event.commits[0].message }}"
       id: my_output
+    - name: Fallo forzado
+      run: |
+        exit 1
 
     - name: Print my_output
       id: my_variable
