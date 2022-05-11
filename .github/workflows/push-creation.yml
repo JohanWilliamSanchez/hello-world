@@ -45,7 +45,7 @@ jobs:
           echo "Mi notificacion"
   run-if-failed:
     runs-on: ubuntu-latest
-    needs: [job1, job2]
+    needs: [build, Notify]
     
     steps:
       - name: Needs context
