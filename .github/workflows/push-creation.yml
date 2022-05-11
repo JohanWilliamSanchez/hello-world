@@ -20,6 +20,7 @@ jobs:
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
           ls -ltr
+          pwd
           echo "::set-output name=otro::$(cat ./response.json)"
           echo "::set-output name=otro2::$(cat ./response.json | jq .projectStatus.status )"
           
@@ -33,7 +34,7 @@ jobs:
            echo "My_Variables3 ${{ toJson(steps.my_variable.outputs.otro).projectStatus.status }}"
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
     - name: Other yml
-      uses: ./.github/actions/other.yml
+      uses: ./.github/workflows/other.yml
 
 
          
