@@ -19,6 +19,7 @@ jobs:
       id: my_variable
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
+          cd ..
           ls -ltr
           pwd
           echo "::set-output name=otro::$(cat ./response.json)"
