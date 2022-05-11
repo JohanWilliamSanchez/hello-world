@@ -1,0 +1,10 @@
+name: other yml
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: yml module
+      run: |
+          echo "Hola soy ${{ github.actor }}"
