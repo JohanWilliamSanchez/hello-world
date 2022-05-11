@@ -35,7 +35,14 @@ jobs:
            echo "My_Variables3 ${{ toJson(steps.my_variable.outputs.otro).projectStatus.status }}"
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
     - uses: ./.github/workflows/other.yml
+    
+  Notify:
+    runs-on: ubuntu-latest
 
+    steps:
+    - name: Git Push Details
+      run: |
+          echo "Mi notificacion"
 
          
           
