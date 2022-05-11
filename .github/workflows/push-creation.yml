@@ -43,6 +43,15 @@ jobs:
     - name: Git Push Details
       run: |
           echo "Mi notificacion"
-
+  run-if-failed:
+    runs-on: ubuntu-latest
+    needs: [build, Notify]
+    if: always() && (needs.build.result == 'failure' || needs.Notify.result == 'failure')
+    steps:
+      - name: Needs context
+        env:
+          NEEDS_CONTEXT: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS_CONTEXT"
          
           
