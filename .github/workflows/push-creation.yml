@@ -49,19 +49,19 @@ jobs:
     if: always()
     steps:
       - name: Needs context
-        if: always() && (needs.job1.result == 'failure' || needs.job2.result == 'failure')
+        if: always() && (needs.build.result == 'failure' || needs.Notify.result == 'failure')
         env:
           NEEDS_CONTEXT: ${{ toJSON(needs) }}
         run: |
           echo "$NEEDS_CONTEXT"
 
       - name: Fallo
-        if: failure() 
+        if: ${{ failure() }} 
         run: |
           echo "Fallo el pipeline"
 
       - name: completo
-        if: failure() 
+        if: ${{ success() }} 
         run: |
           echo "succes el pipeline"
           
