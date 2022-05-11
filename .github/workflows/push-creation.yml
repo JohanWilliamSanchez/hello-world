@@ -33,7 +33,7 @@ jobs:
            echo "My_Variables3 ${{ toJson(steps.my_variable.outputs.otro).projectStatus.status }}"
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
     - name: Other yml
-      uses: ./other.yml
+      uses: ./.github/workflows/other.yml
 
 
          
