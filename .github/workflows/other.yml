@@ -11,7 +11,7 @@ jobs:
       run: |
           echo "Hola soy ${{ github.actor }}"
           exit 1
-      continue-on-error: false
+      continue-on-error: true
       
   fallo:
     runs-on: ubuntu-latest
