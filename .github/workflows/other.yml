@@ -20,7 +20,15 @@ jobs:
   comparacion:
     runs-on: ubuntu-latest
     steps:
-    - name: yml module
+    - name: Metodo success
+      if: success()
       run: |
-          echo "Metodo failure ${{ failure() }}"
-          echo "Metodo Alwais ${{ always() }}"          
+          echo "Metodo succes ${{ success() }}"
+    - name: Metodo failure
+      if: failure()
+      run: |
+          echo "Metodo failure"
+    - name: Metodo allwais
+      if: always()
+      run: |
+          echo "Metodo Alwais"          
