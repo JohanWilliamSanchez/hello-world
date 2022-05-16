@@ -11,7 +11,11 @@ jobs:
       run: |
           echo "Hola soy ${{ github.actor }}"
           exit 1
-      continue-on-error: true
+      #continue-on-error: true #una especie de try catch, cuando falla aun hace que sea verde el job
+    - name: fallo yml module
+      if: failure()
+      run: |
+          echo "Metodo failure"
       
   fallo:
     runs-on: ubuntu-latest
