@@ -33,4 +33,14 @@ jobs:
     - name: Metodo allwais
       if: always()
       run: |
-          echo "Metodo Alwais"          
+          echo "Metodo Alwais"     
+          
+  algo_fallo:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+    - name: Metodo failure
+      run: |
+          echo "Metodo failure"
+     
+  
