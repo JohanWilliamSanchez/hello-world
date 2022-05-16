@@ -4,7 +4,7 @@ on:
     branches:
       - "master"    
 jobs:
-  build:
+  aprobado:
     runs-on: ubuntu-latest
     steps:
     - name: yml module
@@ -19,6 +19,7 @@ jobs:
           
   comparacion:
     runs-on: ubuntu-latest
+    needs: [aprobado, fallo]
     steps:
     - name: Metodo success
       if: success()
