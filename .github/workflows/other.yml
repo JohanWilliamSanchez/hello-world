@@ -1,10 +1,27 @@
 name: other yml
-    
+on:
+  push:
+    branches:
+      - "master"    
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: yml module
       run: |
           echo "Hola soy ${{ github.actor }}"
+  fallo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: yml module
+      run: |
+          echo "Este es un fallo"
+          
+  comparacion:
+    runs-on: ubuntu-latest
+    steps:
+    - name: yml module
+      run: |
+          echo "Metodo succes ${{ succes() }}"
+          echo "Metodo failure ${{ failure() }}"
+          echo "Metodo Alwais ${{ always() }}"          
