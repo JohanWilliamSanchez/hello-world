@@ -10,6 +10,7 @@ jobs:
     - name: yml module
       run: |
           echo "Hola soy ${{ github.actor }}"
+          exit 1
   fallo:
     runs-on: ubuntu-latest
     steps:
