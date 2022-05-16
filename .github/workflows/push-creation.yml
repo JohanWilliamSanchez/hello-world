@@ -37,8 +37,8 @@ jobs:
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro }}"
            echo "My_Variables3 ${{ toJson(steps.my_variable.outputs.otro).projectStatus.status }}"
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
-    - uses: ./.github/workflows/other.yml
-    
+    - name: Probando other.yml
+      uses: JohanWilliamSanchez/hello-world@v1 
   Notify:
     runs-on: ubuntu-latest
 
