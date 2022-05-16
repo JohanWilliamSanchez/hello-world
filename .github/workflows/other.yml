@@ -22,6 +22,5 @@ jobs:
     steps:
     - name: yml module
       run: |
-          echo "Metodo succes ${{ success() }}"
           echo "Metodo failure ${{ failure() }}"
           echo "Metodo Alwais ${{ always() }}"          
