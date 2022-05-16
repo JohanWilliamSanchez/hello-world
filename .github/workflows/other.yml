@@ -37,7 +37,7 @@ jobs:
           
   algo_fallo:
     runs-on: ubuntu-latest
-    if: failure()
+    if: success()
     steps:
     - name: Metodo failure
       run: |
