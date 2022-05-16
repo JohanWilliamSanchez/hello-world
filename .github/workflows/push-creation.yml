@@ -14,15 +14,15 @@ jobs:
           echo "pus creator: ${{ github.actor}}"
           echo "pus commit: ${{ github.event.commits[0].message }}"
       id: my_output
-    - name: Fallo forzado
-      run: |
-        exit 1
-
+    #- name: Fallo forzado
+    #  run: |
+    #   exit 1
+    
+    - uses: actions/checkout@v1
     - name: Print my_output
       id: my_variable
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
-          cd ..
           ls -ltr
           pwd
           echo "::set-output name=otro::$(cat ./response.json)"
@@ -38,7 +38,7 @@ jobs:
            echo "My_Variables3 ${{ toJson(steps.my_variable.outputs.otro).projectStatus.status }}"
            echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
     - name: Probando other.yml
-      uses: JohanWilliamSanchez/hello-world@v1 
+      uses: ./.github/actions/other.yml
   Notify:
     runs-on: ubuntu-latest
 
