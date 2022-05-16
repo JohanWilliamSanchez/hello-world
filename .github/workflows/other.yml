@@ -24,7 +24,7 @@ jobs:
     - name: Metodo success
       if: success()
       run: |
-          echo "Metodo succes ${{ success() }}"
+          echo "Metodo succes"
     - name: Metodo failure
       if: failure()
       run: |
