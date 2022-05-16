@@ -43,10 +43,11 @@ jobs:
           
   algo_fallo:
     runs-on: ubuntu-latest
-    if: success()
+    needs: [aprobado]
+    if: failure()
     steps:
-    - name: Metodo failure
+    - name: Metodo failure 2
       run: |
-          echo "Metodo failure"
+          echo "Metodo failure 2" 
      
   
