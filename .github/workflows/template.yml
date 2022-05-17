@@ -51,5 +51,15 @@ jobs:
           echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
           echo "Status Test_JEST ${{needs.Test_JEST.result}}"
           echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
+          
+  Notification_without:
+    runs-on: ubuntu-latest
+    needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
+    steps:
+    - name: Send notification
+      run: |
+          echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
+          echo "Status Test_JEST ${{needs.Test_JEST.result}}"
+          echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
      
   
