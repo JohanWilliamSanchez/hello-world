@@ -18,7 +18,6 @@ jobs:
     needs: [Copy_files]
     steps:
     - name: analyses
-      if: failure()
       run: |
           echo "Sonar cloud ls -ltr"
           ls -ltr
