@@ -31,7 +31,7 @@ jobs:
       run: |
           echo "Run test"
           
-  Deploy servelles:
+  Deploy_servelles:
     runs-on: ubuntu-latest
     needs: [Test_JEST]
     steps:
