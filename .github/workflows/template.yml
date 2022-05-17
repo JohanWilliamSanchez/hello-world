@@ -40,9 +40,11 @@ jobs:
 
   Notification:
     runs-on: ubuntu-latest
+    needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
+    if: always()
     steps:
-    - name: Metodo success
+    - name: Send notification
       run: |
-          echo "Metodo succes"
+          echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
      
   
