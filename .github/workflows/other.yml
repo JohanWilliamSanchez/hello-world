@@ -2,7 +2,7 @@ name: other yml
 on:
   push:
     branches:
-      - "master"    
+      - "master1"    
 jobs:
   aprobado:
     runs-on: ubuntu-latest
