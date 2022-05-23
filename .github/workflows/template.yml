@@ -10,7 +10,7 @@ jobs:
     - name: Copy
       run: |
           ls -ltr
-          echo "Hola soy ${{ github.actor }}" | tee copiar_archivos.txt
+          echo "Hola soy ${{ github.actor }}" mi rama es ${GITHUB_REF##*/} | tee copiar_archivos.txt
           ls -ltr
           
   Sonar_Cloud:
