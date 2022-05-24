@@ -36,11 +36,11 @@ jobs:
           ls -ltr
           pwd
           echo "::set-output name=otro::$(cat ./response.json)"
-          echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status )"
+          echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
       env:
          DAY_OF_WEEK: $(cat ./response.json | jq .projectStatus.status )
     - name: comparate status sonar
-      if: steps.sonar.outputs.status
+      if: steps.sonar.outputs.status == 'ERROR'
       run: |
         echo "My_Variables2 ${{ steps.sonar.outputs.status }}"
         echo "${DAY_OF_WEEK}"
