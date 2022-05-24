@@ -36,7 +36,7 @@ jobs:
           echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
           
     - name: comparate status sonar
-      if: steps.sonar.outputs.status == 'ERROR'
+      if: steps.sonar.outputs.status != 'ERROR'
       run: |
         echo "Status sonar cloud ${{ steps.sonar.outputs.status }}"
         exit 1
