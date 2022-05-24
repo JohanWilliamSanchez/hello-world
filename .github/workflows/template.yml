@@ -17,9 +17,9 @@ jobs:
       with:
         args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
       env:
-        aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
-        aws_bucket: ${{ secrets.AWS_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
           
   Sonar_Cloud:
     runs-on: ubuntu-latest
