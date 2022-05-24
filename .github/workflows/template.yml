@@ -40,7 +40,7 @@ jobs:
       env:
          DAY_OF_WEEK: $(cat ./response.json | jq .projectStatus.status )
     - name: comparate status sonar
-   #   if: env.DAY_OF_WEEK == 'ERROR'
+      if: steps.sonar.outputs.status
       run: |
         echo "My_Variables2 ${{ steps.sonar.outputs.status }}"
         echo "${DAY_OF_WEEK}"
