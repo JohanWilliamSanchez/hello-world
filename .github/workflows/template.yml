@@ -30,17 +30,17 @@ jobs:
       run: |
           echo "Today is $DAY_OF_WEEK"
     - name: status sonar
-      id: sonarcloud-status
+      id: sonar
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
           ls -ltr
           pwd
           echo "::set-output name=otro::$(cat ./response.json)"
-          echo "::set-output name=otro2::$(cat ./response.json | jq .projectStatus.status )"
+          echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status )"
     - name: comparate status sonar
-      if: steps.sonarcloud-status.outputs.otro2 == 'ERROR'
+      if: always() && steps.sonar.outputs.status == 'ERROR'
       run: |
-        echo "My_Variables2 ${{ steps.sonarcloud-status.outputs.otro2 }}"
+        echo "My_Variables2 ${{ steps.sonar.outputs.status }}"
       
   Test_JEST:
     runs-on: ubuntu-latest
