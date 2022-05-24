@@ -34,6 +34,7 @@ jobs:
       run: |
           echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
           ls -ltr
+          cat response.json
           pwd
           echo "::set-output name=otro::$(cat ./response.json)"
           echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
