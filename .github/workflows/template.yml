@@ -39,7 +39,7 @@ jobs:
           echo "::set-output name=otro2::$(cat ./response.json | jq .projectStatus.status )"
     - name: comparate status sonar
       run: |
-        echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
+        echo "My_Variables2 ${{ steps.sonarcloud-status.outputs.otro2 }}"
       
   Test_JEST:
     runs-on: ubuntu-latest
