@@ -38,9 +38,12 @@ jobs:
           echo "::set-output name=otro::$(cat ./response.json)"
           echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status )"
     - name: comparate status sonar
-      if: always() && steps.sonar.outputs.status == 'ERROR'
+      if: always() && $(cat ./response.json | jq .projectStatus.status ) == 'ERROR'
       run: |
         echo "My_Variables2 ${{ steps.sonar.outputs.status }}"
+        if [-e 'hello.txt']; then
+                echo "::set-output name=exists::true"
+              fi
       
   Test_JEST:
     runs-on: ubuntu-latest
