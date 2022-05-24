@@ -7,24 +7,15 @@ jobs:
   Copy_files:
     runs-on: ubuntu-latest
     steps:
-    - name: Copy
-      run: |
-          mkdir carpeta
-          ls -ltr
-          echo "Hola soy ${{ github.actor }}" mi rama es ${GITHUB_REF##*/} | tee copiar_archivos.txt
-          ls -ltr
-          cd carpeta
-    - name: Upload file 
-      uses: jakejarvis/s3-sync-action@master
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
-    - name: revisar
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
+        aws-region: us-east-1
+    - name: Copy files to the test website with the AWS CLI
       run: |
-           pwd
+        aws s3 sync . s3://${{ secrets.AWS_BUCKET }}
         
           
   Sonar_Cloud:
