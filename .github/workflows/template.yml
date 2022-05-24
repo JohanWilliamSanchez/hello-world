@@ -38,7 +38,7 @@ jobs:
           echo "::set-output name=otro::$(cat ./response.json)"
           echo "::set-output name=otro2::$(cat ./response.json | jq .projectStatus.status )"
     - name: comparate status sonar
-      if: env.DAY_OF_WEEK == 'Monday'
+      if: steps.sonarcloud-status.outputs.otro2 == 'ERROR'
       run: |
         echo "My_Variables2 ${{ steps.sonarcloud-status.outputs.otro2 }}"
       
