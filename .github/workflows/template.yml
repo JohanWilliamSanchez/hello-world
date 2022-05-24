@@ -2,7 +2,10 @@ name: Template hello world
 on:
   push:
     branches:
-      - "master"    
+      - "master"
+env:
+  DAY_OF_WEEK: Monday
+  
 jobs:
   Copy_files:
     runs-on: ubuntu-latest
@@ -25,8 +28,18 @@ jobs:
     steps:
     - name: analyses
       run: |
-          echo "Sonar cloud ls -ltr"
+          echo "Today is $DAY_OF_WEEK"
+    - name: status sonar
+      id: sonarcloud-status
+      run: |
+          echo "::set-output name=test::$(curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json)"
           ls -ltr
+          pwd
+          echo "::set-output name=otro::$(cat ./response.json)"
+          echo "::set-output name=otro2::$(cat ./response.json | jq .projectStatus.status )"
+    - name: comparate status sonar
+      run: |
+        echo "My_Variables2 ${{ steps.my_variable.outputs.otro2 }}"
       
   Test_JEST:
     runs-on: ubuntu-latest
