@@ -28,11 +28,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         path: 'hola'
-        repository: JohanWilliamSanchez/lgmk-backend-hello-world
+        repository: JohanWilliamSanchez/CI-CD-Lambda
     - name: Revisar carpeta hola
       run: |
         ll hola
-        cp hola/config config
+        cp hola/package.json config.json
         ls -ltr
         
 #     - name: Configure AWS Credentials
