@@ -31,7 +31,7 @@ jobs:
         repository: JohanWilliamSanchez/CI-CD-Lambda
     - name: Revisar carpeta hola
       run: |
-        ll hola
+        ls hola
         cp hola/package.json config.json
         ls -ltr
         
