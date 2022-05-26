@@ -19,7 +19,7 @@ jobs:
           mkdir hola
           cd hola
           pwd
-          ls-ltr
+          ls -ltr
     - name: carpeta
       run: |
           echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
