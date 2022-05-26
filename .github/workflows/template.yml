@@ -1,4 +1,4 @@
-name: Template hello world
+name: Test between jobs
 on:
   push:
     branches:
@@ -11,15 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
-        aws-region: us-east-1
-    - name: Copy files to the test website with the AWS CLI
+    - name: analyses
       run: |
-        aws s3 sync . s3://${{ secrets.AWS_BUCKET }}/New_project
+          echo "Today is $DAY_OF_WEEK" | tee archivo.txt
+          pwd
+          ls -ltr
+          mkdir hola
+          cd hola
+          pwd
+          ls-ltr
+    - name: carpeta
+      run: |
+          echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
+          ls -ltr
+          pwd
+    
+#     - name: Configure AWS Credentials
+#       uses: aws-actions/configure-aws-credentials@v1
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_JOHAN }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_JOHAN }}
+#         aws-region: us-east-1
+#     - name: Copy files to the test website with the AWS CLI
+#       run: |
+#         aws s3 sync . s3://${{ secrets.AWS_BUCKET }}/New_project
         
           
   Sonar_Cloud:
@@ -29,56 +44,58 @@ jobs:
     - name: analyses
       run: |
           echo "Today is $DAY_OF_WEEK"
+          ls -ltr
+          pwd
     - name: get status sonar
       id: sonar
       run: |
           curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json
           echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
           
-    - name: comparate status sonar
-      if: steps.sonar.outputs.status != 'ERROR'
-      run: |
-        echo "Status sonar cloud ${{ steps.sonar.outputs.status }}"
-        exit 1
+#     - name: comparate status sonar
+#       if: steps.sonar.outputs.status != 'ERROR'
+#       run: |
+#         echo "Status sonar cloud ${{ steps.sonar.outputs.status }}"
+#         exit 1
       
-  Test_JEST:
-    runs-on: ubuntu-latest
-    needs: [Sonar_Cloud]
-    steps:
-    - uses: actions/checkout@v3
-    - name: run test
-      run: |
-          echo "Run test"
-          ls -ltr
+#   Test_JEST:
+#     runs-on: ubuntu-latest
+#     needs: [Sonar_Cloud]
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: run test
+#       run: |
+#           echo "Run test"
+#           ls -ltr
           
-  Deploy_servelles:
-    runs-on: ubuntu-latest
-    needs: [Test_JEST]
-    steps:
-    - name: Deploy
-      run: |
-          echo "Metodo deploy"
-  #        exit 1
+#   Deploy_servelles:
+#     runs-on: ubuntu-latest
+#     needs: [Test_JEST]
+#     steps:
+#     - name: Deploy
+#       run: |
+#           echo "Metodo deploy"
+#   #        exit 1
 
-  Notification:
-    runs-on: ubuntu-latest
-    needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
-    if: always()
-    steps:
-    - name: Send notification
-      run: |
-          echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
-          echo "Status Test_JEST ${{needs.Test_JEST.result}}"
-          echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
+#   Notification:
+#     runs-on: ubuntu-latest
+#     needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
+#     if: always()
+#     steps:
+#     - name: Send notification
+#       run: |
+#           echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
+#           echo "Status Test_JEST ${{needs.Test_JEST.result}}"
+#           echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
           
-  Notification_without:
-    runs-on: ubuntu-latest
-    needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
-    steps:
-    - name: Send notification
-      run: |
-          echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
-          echo "Status Test_JEST ${{needs.Test_JEST.result}}"
-          echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
+#   Notification_without:
+#     runs-on: ubuntu-latest
+#     needs: [Sonar_Cloud, Test_JEST ,Deploy_servelles]
+#     steps:
+#     - name: Send notification
+#       run: |
+#           echo "Status SonarCloud ${{needs.Sonar_Cloud.result}}"
+#           echo "Status Test_JEST ${{needs.Test_JEST.result}}"
+#           echo "Status Deploy_servelles ${{needs.Deploy_servelles.result}}"
      
   
