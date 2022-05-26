@@ -20,12 +20,21 @@ jobs:
           cd hola
           pwd
           ls -ltr
-    - name: carpeta
+    - name: bajar otro repositorio en carpeta hola
       run: |
           echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
           ls -ltr
           pwd
-    
+    - uses: actions/checkout@v3
+      with:
+        path: 'hola'
+        repository: 'https://github.com/logicmark-eng/lgmk-backend-hello-world'
+    - name: Revisar carpeta hola
+      run: |
+        ll hola
+        cp hola/config config
+        ls -ltr
+        
 #     - name: Configure AWS Credentials
 #       uses: aws-actions/configure-aws-credentials@v1
 #       with:
