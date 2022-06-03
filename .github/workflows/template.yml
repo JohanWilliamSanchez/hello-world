@@ -16,10 +16,12 @@ jobs:
           echo 'Today is $DAY_OF_WEEK $(echo ${ GITHUB_REF##*/ } | tr "[:lower:]" "[:upper:]" )' | tee archivo.txt
           pwd
           ls -ltr
+          cat archivo.txt
           mkdir hola
           cd hola
           pwd
           ls -ltr
+          
     - name: bajar otro repositorio en carpeta hola
       run: |
           echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
