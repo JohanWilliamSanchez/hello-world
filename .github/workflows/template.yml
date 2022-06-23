@@ -5,7 +5,7 @@ on:
       - "master"
 env:
   DAY_OF_WEEK: Monday
-  branch_name: ${GITHUB_REF#refs/heads/ }
+  branch_name: $GITHUB_REF#refs/heads/ 
   
 jobs:
   Copy_files:
