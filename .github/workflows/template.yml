@@ -13,7 +13,7 @@ jobs:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
         echo 'Today is $DAY_OF_WEEK' | tee archivo.txt
-        echo '${{ toJson(github) }}}'
+        echo ${GITHUB_REF#refs/heads/}
 
 
 #     - name: bajar otro repositorio en carpeta hola 
