@@ -12,8 +12,8 @@ jobs:
     steps:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
-        echo 'Today is $DAY_OF_WEEK' | tee archivo.txt
-        echo '${ GITHUB_REF##*/ }'
+        echo 'Today is ${{DAY_OF_WEEK}}' | tee archivo.txt
+        echo '${{ GITHUB_REF##*/ }}'
 
 
 #     - name: bajar otro repositorio en carpeta hola 
