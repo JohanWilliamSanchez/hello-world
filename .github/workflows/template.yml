@@ -14,6 +14,7 @@ jobs:
     - name: analyses
       run: |
           echo 'Today is $DAY_OF_WEEK | tee archivo.txt
+          echo '${ GITHUB_REF##*/ }'
           pwd
           ls -ltr
           cat archivo.txt
@@ -22,19 +23,19 @@ jobs:
           pwd
           ls -ltr
           
-    - name: bajar otro repositorio en carpeta hola
-      run: |
-          echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
-          ls -ltr
-          pwd
+#     - name: bajar otro repositorio en carpeta hola
+#       run: |
+#           echo "Today is $DAY_OF_WEEK" | tee archivo2.txt
+#           ls -ltr
+#           pwd
 #     - uses: actions/checkout@v3
 #       with:
 #         path: 'hola'
 #         repository: JohanWilliamSanchez/lgmk-backend-hello-world
 #         token: '${{ secrets.token_alejo }}'
-    - name: Revisar carpeta hola
-      run: |
-        ls -ltr
+#     - name: Revisar carpeta hola
+#       run: |
+#         ls -ltr
         
 #     - name: Configure AWS Credentials
 #       uses: aws-actions/configure-aws-credentials@v1
@@ -47,20 +48,20 @@ jobs:
 #         aws s3 sync . s3://${{ secrets.AWS_BUCKET }}/New_project
         
           
-  Sonar_Cloud:
-    runs-on: ubuntu-latest
-    needs: [Copy_files]
-    steps:
-    - name: analyses
-      run: |
-          echo "Today is $DAY_OF_WEEK"
-          ls -ltr
-          pwd
-    - name: get status sonar
-      id: sonar
-      run: |
-          curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json
-          echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
+#   Sonar_Cloud:
+#     runs-on: ubuntu-latest
+#     needs: [Copy_files]
+#     steps:
+#     - name: analyses
+#       run: |
+#           echo "Today is $DAY_OF_WEEK"
+#           ls -ltr
+#           pwd
+#     - name: get status sonar
+#       id: sonar
+#       run: |
+#           curl --user ${{secrets.SONAR_TOKEN}} https://sonarcloud.io/api/qualitygates/project_status?projectKey='lgmk-nodejs-backend-starter' -o response.json
+#           echo "::set-output name=status::$(cat ./response.json | jq .projectStatus.status | sed 's/"//g' )"
           
 #     - name: comparate status sonar
 #       if: steps.sonar.outputs.status != 'ERROR'
