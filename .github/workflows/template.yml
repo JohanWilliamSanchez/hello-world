@@ -5,7 +5,6 @@ on:
       - "master"
 env:
   DAY_OF_WEEK: Monday
-  branch_name: $(${GITHUB_REF#refs/heads/} | tr [:lower:] [:upper:])
   
 jobs:
   Copy_files:
@@ -13,8 +12,7 @@ jobs:
     steps:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
-        echo "Today is $DAY_OF_WEEK" | tee archivo.txt
-        echo  ${{secrets.MYJSON}}
+        echo  "${{secrets.MYJSON}}"
 
 
 #     - name: bajar otro repositorio en carpeta hola 
