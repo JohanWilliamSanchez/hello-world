@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
-        echo  "${{secrets.MYJSON}}"
+        echo  "${{secrets.MYJSON.saludo}}"
 
 
 #     - name: bajar otro repositorio en carpeta hola 
