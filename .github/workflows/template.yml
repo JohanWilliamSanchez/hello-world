@@ -13,7 +13,7 @@ jobs:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
         echo  "${{secrets.MYJSON.saludo}}"  > myjson.json
-        cat ./myjson.json | jq .saludo
+        cat ./myjson.json | jq .
 
 
 #     - name: bajar otro repositorio en carpeta hola 
