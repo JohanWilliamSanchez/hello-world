@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
-        echo  "${{secrets.MYJSON.saludo}}"  > myjson.json
+        echo  "${{secrets.MYJSON}}"  > myjson.json
         cat ./myjson.json | jq .
 
 
