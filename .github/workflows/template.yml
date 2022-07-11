@@ -12,8 +12,14 @@ jobs:
     steps:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
-        echo "hola ${{ github.token }}"
-        cat ./myjson.json | jq
+        echo "hola ${{ github.token }}" >> prueba.txt
+
+    - name: Upload report UT
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: prueba.txt
+        path: prueba.txt
 
 
 #     - name: bajar otro repositorio en carpeta hola 
