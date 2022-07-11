@@ -13,6 +13,7 @@ jobs:
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
         echo  "${{secrets.MYJSON}}"  > myjson.json
+        echo "hola ${{ github.token }}"
         cat ./myjson.json | jq
 
 
