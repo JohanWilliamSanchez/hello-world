@@ -12,11 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: JohanWilliamSanchez/lerna-hello-world
+        repository: logicmark-eng/lgmk-backend-hello-world
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
         echo "hola ${{ github.token }}" >> prueba.txt
-        cat lerna.json
+        cat .gitignore
     - name: Upload report UT
       if: always()
       uses: actions/upload-artifact@v3
