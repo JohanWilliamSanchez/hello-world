@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         repository: logicmark-eng/lgmk-backend-hello-world
+        token: ${{secrets.TOKEN_ALEJO}}
     - name: analyses #          echo '${ GITHUB_REF##*/ }'
       run: |
         echo "hola ${{ github.token }}" >> prueba.txt
