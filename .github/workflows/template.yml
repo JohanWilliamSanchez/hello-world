@@ -27,7 +27,10 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 14
-    - run: node -v
+    - run: |
+        node -v
+        docker-compose
+    
 
 
 #     - name: bajar otro repositorio en carpeta hola 
