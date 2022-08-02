@@ -24,6 +24,10 @@ jobs:
       with:
         name: prueba.txt
         path: prueba.txt
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
+    - run: node -v
 
 
 #     - name: bajar otro repositorio en carpeta hola 
