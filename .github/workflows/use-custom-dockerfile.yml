@@ -1,0 +1,17 @@
+name: other yml
+on:
+  push:
+    branches:
+      - "desarrollo"    
+jobs:
+  hello-world:
+    name: Un job para saludar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step Hola Mundo
+        id: hello
+        uses: pablokbs/hello-world-docker-action@v1
+        with:
+          who-to-greet: "Johan"
+      - name: Usar el output
+        run: echo "La fecha fue ${{ steps.hello.outputs.time }}"
