@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Step Hola Mundo
         id: hello
-        uses: JohanWilliamSanchez/github-action-docker-file@v1
+        uses: JohanWilliamSanchez/github-action-docker-file@v2
         with:
           who-to-greet: "Johan"
       - name: Usar el output
