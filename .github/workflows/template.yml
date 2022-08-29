@@ -19,6 +19,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
+            -Dsonar.organization=JohanWilliamSanchez
             -Dsonar.projectKey=JohanWilliamSanchez_hello-world
 
         #   args: >
