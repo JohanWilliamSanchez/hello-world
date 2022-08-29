@@ -17,11 +17,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.organization=JohanWilliamSanchez
-            -Dsonar.projectKey=JohanWilliamSanchez_hello-world
-            -Dsonar.host.url=https://sonarcloud.io
 
         #   args: >
         #     -Dsonar.branch.name=staging
