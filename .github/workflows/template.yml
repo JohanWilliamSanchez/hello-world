@@ -7,29 +7,21 @@ env:
   DAY_OF_WEEK: Monday
   
 jobs:
-  Copy_files:
-    runs-on: ubuntu-latest
+  sonar-cloud:
+    runs-on: ubuntu-latest 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        repository: logicmark-eng/lgmk-backend-hello-world
-        token: ${{secrets.TOKEN_ALEJO}}
-    - name: analyses #          echo '${ GITHUB_REF##*/ }'
-      run: |
-        echo "hola ${{ github.token }}" >> prueba.txt
-        cat .gitignore
-    - name: Upload report UT
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: prueba.txt
-        path: prueba.txt
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 14.20.0
-    - run: |
-        node -v
-        docker-compose
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # with:
+        #   args: >
+        #     -Dsonar.branch.name=staging
+        #     -Dsonar.branch.target=target-staging
+      
     
 
 
