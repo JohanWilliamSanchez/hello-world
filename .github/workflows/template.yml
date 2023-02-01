@@ -34,7 +34,7 @@ jobs:
     - name: Format output
       id: format-output-value2
       run: |
-        echo "salida del paso: ${{ needs.color.output.output1}}"
+        echo "salida del paso: ${{ needs.color.outputs.output1}}"
   notification:
     runs-on: ubuntu-latest
     steps:
