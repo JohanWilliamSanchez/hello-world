@@ -24,6 +24,14 @@ jobs:
     - name: Prueba
       run: |
         echo "the result is ${{ steps.format-output-value.outputs.formatted-result-value }}"
+  test:
+    runs-on: ubuntu-latest
+    needs: [color]
+    steps:
+    - name: Format output
+      id: format-output-value2
+      run: |
+        echo "salida del paso: ${{ needs.color.output.format-output-value}}"
   notification:
     runs-on: ubuntu-latest
     steps:
