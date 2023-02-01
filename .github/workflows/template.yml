@@ -44,157 +44,157 @@ jobs:
         curl --location --request POST '${{ secrets.WEBHOOK }}' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-        "cardsV2": [
-          {
-            "cardId": "unique-card-id",
-            "card": {
-                "header": {
-                  "title": "Sasha",
-                  "subtitle": "Software Engineer",
-                  "imageUrl":
-                  "https://developers.google.com/chat/images/quickstart-app-avatar.png",
-                  "imageType": "CIRCLE",
-                  "imageAltText": "Avatar for Sasha",
-                },
-                "sections": [
-                  {
-                    "header": "Contact Info",
-                    "collapsible": true,
-                    "uncollapsibleWidgetsCount": 1,
-                    "widgets": [
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "EMAIL",
-                          },
-                          "text": "sasha@example.com",
-                        }
-                      },
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "PERSON",
-                          },
-                          "text": "${{ needs.color.outputs.output1}}",
-                        },
-                      },
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "PHONE",
-                          },
-                          "text": "+1 (555) 555-1234",
-                        }
-                      },
-                      {
-                        "buttonList": {
-                          "buttons": [
-                            {
-                              "text": "Share",
-                              "onClick": {
-                                "openLink": {
-                                  "url": "https://example.com/share",
-                                }
-                              }
-                            },
-                            {
-                              "text": "Edit",
-                              "onClick": {
-                                "action": {
-                                  "function": "goToView",
-                                  "parameters": [
-                                    {
-                                      "key": "viewType",
-                                      "value": "EDIT",
-                                    }
-                                  ],
-                                }
-                              }
-                            },
-                          ],
-                        }
-                      },
-                    ],
+          "cardsV2": [
+            {
+              "cardId": "unique-card-id",
+              "card": {
+                  "header": {
+                    "title": "Sasha",
+                    "subtitle": "Software Engineer",
+                    "imageUrl":
+                    "https://developers.google.com/chat/images/quickstart-app-avatar.png",
+                    "imageType": "CIRCLE",
+                    "imageAltText": "Avatar for Sasha",
                   },
-                ],
-              },
-          },
-          {
-            "cardId": "unique-card-id",
-            "card": {
-                "header": {
-                  "title": "Sasha",
-                  "subtitle": "Software Engineer",
-                  "imageUrl":
-                  "https://developers.google.com/chat/images/quickstart-app-avatar.png",
-                  "imageType": "CIRCLE",
-                  "imageAltText": "Avatar for Sasha",
-                },
-                "sections": [
-                  {
-                    "header": "Contact Info",
-                    "collapsible": true,
-                    "uncollapsibleWidgetsCount": 1,
-                    "widgets": [
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "EMAIL",
-                          },
-                          "text": "sasha@example.com",
-                        }
-                      },
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "PERSON",
-                          },
-                          "text": "${{ needs.color.outputs.output1}}",
+                  "sections": [
+                    {
+                      "header": "Contact Info",
+                      "collapsible": true,
+                      "uncollapsibleWidgetsCount": 1,
+                      "widgets": [
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "EMAIL",
+                            },
+                            "text": "sasha@example.com",
+                          }
                         },
-                      },
-                      {
-                        "decoratedText": {
-                          "startIcon": {
-                            "knownIcon": "PHONE",
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "PERSON",
+                            },
+                            "text": "${{ needs.color.outputs.output1}}",
                           },
-                          "text": "+1 (555) 555-1234",
-                        }
-                      },
-                      {
-                        "buttonList": {
-                          "buttons": [
-                            {
-                              "text": "Share",
-                              "onClick": {
-                                "openLink": {
-                                  "url": "https://example.com/share",
-                                }
-                              }
+                        },
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "PHONE",
                             },
-                            {
-                              "text": "Edit",
-                              "onClick": {
-                                "action": {
-                                  "function": "goToView",
-                                  "parameters": [
-                                    {
-                                      "key": "viewType",
-                                      "value": "EDIT",
-                                    }
-                                  ],
+                            "text": "+1 (555) 555-1234",
+                          }
+                        },
+                        {
+                          "buttonList": {
+                            "buttons": [
+                              {
+                                "text": "Share",
+                                "onClick": {
+                                  "openLink": {
+                                    "url": "https://example.com/share",
+                                  }
                                 }
-                              }
-                            },
-                          ],
-                        }
-                      },
-                    ],
+                              },
+                              {
+                                "text": "Edit",
+                                "onClick": {
+                                  "action": {
+                                    "function": "goToView",
+                                    "parameters": [
+                                      {
+                                        "key": "viewType",
+                                        "value": "EDIT",
+                                      }
+                                    ],
+                                  }
+                                }
+                              },
+                            ],
+                          }
+                        },
+                      ],
+                    },
+                  ],
+                },
+            },
+            {
+              "cardId": "unique-card-id-2",
+              "card": {
+                  "header": {
+                    "title": "Sasha",
+                    "subtitle": "Software Engineer",
+                    "imageUrl":
+                    "https://developers.google.com/chat/images/quickstart-app-avatar.png",
+                    "imageType": "CIRCLE",
+                    "imageAltText": "Avatar for Sasha",
                   },
-                ],
-              },
-          }
-        ]
-      }'
+                  "sections": [
+                    {
+                      "header": "Contact Info",
+                      "collapsible": true,
+                      "uncollapsibleWidgetsCount": 1,
+                      "widgets": [
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "EMAIL",
+                            },
+                            "text": "sasha@example.com",
+                          }
+                        },
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "PERSON",
+                            },
+                            "text": "${{ needs.color.outputs.output1}}",
+                          },
+                        },
+                        {
+                          "decoratedText": {
+                            "startIcon": {
+                              "knownIcon": "PHONE",
+                            },
+                            "text": "+1 (555) 555-1234",
+                          }
+                        },
+                        {
+                          "buttonList": {
+                            "buttons": [
+                              {
+                                "text": "Share",
+                                "onClick": {
+                                  "openLink": {
+                                    "url": "https://example.com/share",
+                                  }
+                                }
+                              },
+                              {
+                                "text": "Edit",
+                                "onClick": {
+                                  "action": {
+                                    "function": "goToView",
+                                    "parameters": [
+                                      {
+                                        "key": "viewType",
+                                        "value": "EDIT",
+                                      }
+                                    ],
+                                  }
+                                }
+                              },
+                            ],
+                          }
+                        },
+                      ],
+                    },
+                  ],
+                },
+            }
+          ]
+        }'
 
 
 #     - name: bajar otro repositorio en carpeta hola 
