@@ -17,7 +17,7 @@ jobs:
         if [ "$RESULT" == "success" ]; then
           RESULT="<font color='green'>$RESULT</font>"
         else
-          RESULT="<font color=\"#80e27e\">$RESULT</font>"
+          RESULT='<font color=\"#80e27e\">Online</font>'
         fi
         echo "valor: $RESULT"
         echo "formatted-result-value=$RESULT" >> $GITHUB_OUTPUT
