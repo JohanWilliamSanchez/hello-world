@@ -21,6 +21,8 @@ jobs:
         fi
         echo "valor: $RESULT"
         echo "formatted-result-value=$RESULT" >> $GITHUB_OUTPUT
+    - name: Prueba
+      run: |
         echo "the result is ${{ steps.format-output-value.outputs.formatted-result-value }}"
   notification:
     runs-on: ubuntu-latest
