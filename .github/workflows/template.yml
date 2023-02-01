@@ -7,24 +7,91 @@ env:
   DAY_OF_WEEK: Monday
   
 jobs:
-  sonar-cloud:
-    runs-on: ubuntu-latest 
+  notification:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - run: |
-          echo ${GITHUB_REF##*/}
-#       - name: SonarCloud Scan
-#         uses: sonarsource/sonarcloud-github-action@master
-#         env:
-#           GITHUB_TOKEN: ${{ github.token }}
-#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-        #   args: >
-        #     -Dsonar.branch.name=staging
-        #     -Dsonar.branch.target=target-staging
-      
-    
+      - name: Google notification
+        run: |
+          curl --location --request POST '${{ secrets.WEBHOOK }}' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+          "cardsV2": [
+            {
+              "cardId": "unique-card-id",
+              "card": {
+                "header": {
+                  "title": "Sasha",
+                  "subtitle": "Software Engineer",
+                  "imageUrl":
+                  "https://developers.google.com/chat/images/quickstart-app-avatar.png",
+                  "imageType": "CIRCLE",
+                  "imageAltText": "Avatar for Sasha",
+                },
+                "sections": [
+                  {
+                    "header": "Contact Info",
+                    "collapsible": true,
+                    "uncollapsibleWidgetsCount": 1,
+                    "widgets": [
+                      {
+                        "decoratedText": {
+                          "startIcon": {
+                            "knownIcon": "EMAIL",
+                          },
+                          "text": "sasha@example.com",
+                        }
+                      },
+                      {
+                        "decoratedText": {
+                          "startIcon": {
+                            "knownIcon": "PERSON",
+                          },
+                          "text": "<font color=\"#80e27e\">Online</font>",
+                        },
+                      },
+                      {
+                        "decoratedText": {
+                          "startIcon": {
+                            "knownIcon": "PHONE",
+                          },
+                          "text": "+1 (555) 555-1234",
+                        }
+                      },
+                      {
+                        "buttonList": {
+                          "buttons": [
+                            {
+                              "text": "Share",
+                              "onClick": {
+                                "openLink": {
+                                  "url": "https://example.com/share",
+                                }
+                              }
+                            },
+                            {
+                              "text": "Edit",
+                              "onClick": {
+                                "action": {
+                                  "function": "goToView",
+                                  "parameters": [
+                                    {
+                                      "key": "viewType",
+                                      "value": "EDIT",
+                                    }
+                                  ],
+                                }
+                              }
+                            },
+                          ],
+                        }
+                      },
+                    ],
+                  },
+                ],
+              },
+            }
+          ],
+        }'
 
 
 #     - name: bajar otro repositorio en carpeta hola 
