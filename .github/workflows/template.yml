@@ -37,6 +37,7 @@ jobs:
         echo "salida del paso: ${{ needs.color.outputs.output1}}"
   notification:
     runs-on: ubuntu-latest
+    needs: [color]
     steps:
     - name: Google notification
       run: |
@@ -74,7 +75,7 @@ jobs:
                             "startIcon": {
                               "knownIcon": "PERSON",
                             },
-                            "text": "<font color=\"#80e27e\">Online</font>",
+                            "text": "${{ needs.color.outputs.output1}}",
                           },
                         },
                         {
