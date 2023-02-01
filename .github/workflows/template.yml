@@ -7,6 +7,21 @@ env:
   DAY_OF_WEEK: Monday
   
 jobs:
+  color:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Format output
+      id: format-output-value
+      run: |
+        RESULT="succes"
+        if [ "$RESULT" == "success" ]; then
+          RESULT="<font color='green'>$RESULT</font>"
+        else
+          RESULT="<font color='red'>$RESULT</font>"
+        fi
+        echo "valor: $RESULT"
+        echo "formatted-result-value=$RESULT" >> $GITHUB_OUTPUT
+        echo "the result is ${{ steps.format-output-value.outputs.formatted-result-value }}"
   notification:
     runs-on: ubuntu-latest
     steps:
