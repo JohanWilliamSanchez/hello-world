@@ -14,8 +14,38 @@ jobs:
       run: |
         curl --location --request POST '${{ secrets.WEBHOOK }}' \
         --header 'Content-Type: application/json' \
-        --data-raw '
-        "text": "<font color=\"#80e27e\">Online</font>"'
+        --data-raw '{
+        "cardsV2": [
+          {
+            "cardId": "unique-card-id",
+            "card": {
+              "header": {
+                "title": "Sasha",
+                "subtitle": "Software Engineer",
+              },
+              "sections": [
+                {
+                  "header": "Contact Info",
+                  "collapsible": true,
+                  "uncollapsibleWidgetsCount": 1,
+                  "widgets": [
+
+                    {
+                      "decoratedText": {
+                        "startIcon": {
+                          "knownIcon": "PERSON",
+                        },
+                        "text": "<font color=\"#80e27e\">Online</font>",
+                      },
+                    },
+
+                  ],
+                },
+              ],
+            },
+          }
+        ],
+      }'
 
 
 #     - name: bajar otro repositorio en carpeta hola 
